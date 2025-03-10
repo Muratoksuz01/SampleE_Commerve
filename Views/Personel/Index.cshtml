@@ -1,0 +1,54 @@
+@model List<Personel>
+@{
+    ViewData["Title"] = "Personel Listesi";
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Personel ID</th>
+                <th>Personel Ad</th>
+                <th>Personel Soyad</th>
+                <th>Personel Görsel</th>
+                <th>Departman</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personel in Model)
+            {
+                <tr>
+                    <td>@personel.PersonelID</td>
+                    <td>@personel.PersonelAd</td>
+                    <td>@personel.PersonelSoyad</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(personel.PersonelGorsel))
+                        {
+                            @personel.PersonelGorsel
+                        }
+                        else
+                        {
+                            <span>Görsel yok</span>
+                        }
+                    </td>
+                    <td>@personel.Departman?.DepartmanAd</td>
+                    <td>
+                        <a href="@Url.Action("PersonelGetir", "Personel", new { id = personel.PersonelID })" class="btn btn-warning">Güncelle</a>
+                        <a href="@Url.Action("DepartmanPersonelSatis", "Departman", new { id = personel.PersonelID })" class="btn btn-info">Satis</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Veri bulunamadı.</p>
+}
+
+<a href="/Personel/PersonelEkle" class="btn btn-primary">Yeni Personel Ekle</a>

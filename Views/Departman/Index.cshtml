@@ -1,0 +1,26 @@
+@model List<Departman>
+@{
+    Layout="~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Index";
+}
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Departman Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>detay</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DepartmanID</td>
+            <td>@item.DepartmanAd</td>
+            <td><a href="/Departman/DepartmanSil/@item.DepartmanID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Departman/DepartmanGetir/@item.DepartmanID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Departman/DepartmanDetay/@item.DepartmanID" class="btn btn-success">Detay</a></td>
+        </tr>
+    }
+</table>
+<a href="/Departman/DepartmanEkle" class="btn btn-primary">Yeni Departman</a>

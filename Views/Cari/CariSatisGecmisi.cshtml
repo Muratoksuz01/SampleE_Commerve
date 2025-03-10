@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Cari Satış Geçmişi";
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+}
+@model List<SatisHareket>
+
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewBag.cariAdSoyad - Satış Hareketleri</h3>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Satış ID</th>
+                <th>Tarih</th>
+                <th>Adet</th>
+                <th>Fiyat</th>
+                <th>Toplam</th>
+                <th>Ürün</th>
+                <th>Personel</th>
+                <th>Yazdır</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var satis in Model)
+            {
+                <tr>
+                    <td>@satis.Satisid</td>
+                    <td>@satis.Tarih.ToString("dd/MM/yyyy")</td>
+                    <td>@satis.Adet</td>
+                    <td>@satis.Fiyat.ToString("C")</td>
+                    <td>@satis.Toplam.ToString("C")</td>
+                    <td>
+                        @if (satis.Urun != null)
+                        {
+                            @satis.Urun.UrunAd
+                        }
+                        else
+                        {
+                            <span>Ürün mevcut değil</span>
+                        }
+                    </td>
+                    <td>
+                        @if (satis.Personel != null)
+                        {
+                       @($"{satis.Personel.PersonelAd} {satis.Personel.PersonelSoyad}")
+
+                        }
+                        else
+                        {
+                            <span>Müşteri mevcut değil</span>
+                        }
+                    </td>
+                    <td><button class="btn btn-primary"> Yazdır </button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Bu cariye ait satış hareketi bulunmamaktadır.</p>
+}

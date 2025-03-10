@@ -1,0 +1,35 @@
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "DepartmanDetay";
+}
+@model List<Personel>
+
+<h2>Departman Detay</h2>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">@ViewBag.d</li>
+</ol>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Personel Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Görsel</th>
+            <th>Satışlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonelID</td>
+                <td>@item.PersonelAd</td>
+                <td>@item.PersonelSoyad</td>
+                <td>@item.PersonelGorsel</td>
+                <td>
+                  <a href="/Departman/DepartmanPersonelSatis/@item.PersonelID" class="btn btn-primary"> satişlar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,68 @@
+@model E_ticaret.Models.Sınıflar.Faturalar
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Fatura Güncelle";
+}
+
+<h2>Fatura Güncelle</h2>
+
+<form asp-action="FaturaGuncelle" method="post">
+    <input type="hidden" asp-for="FaturaID" />
+
+    <div class="form-group">
+        <label asp-for="FaturaSeriNo" class="control-label">Fatura Seri No</label>
+        <input asp-for="FaturaSeriNo" class="form-control" />
+        <span asp-validation-for="FaturaSeriNo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FaturaSıraNo" class="control-label">Fatura Sıra No</label>
+        <input asp-for="FaturaSıraNo" class="form-control" />
+        <span asp-validation-for="FaturaSıraNo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tarih" class="control-label">Tarih</label>
+        <input asp-for="Tarih" class="form-control" type="date" />
+        <span asp-validation-for="Tarih" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VergiDairesi" class="control-label">Vergi Dairesi</label>
+        <input asp-for="VergiDairesi" class="form-control" />
+        <span asp-validation-for="VergiDairesi" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Saat" class="control-label">Saat</label>
+        <input asp-for="Saat" class="form-control" type="time" />
+        <span asp-validation-for="Saat" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeslimEden" class="control-label">Teslim Eden</label>
+        <input asp-for="TeslimEden" class="form-control" />
+        <span asp-validation-for="TeslimEden" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeslimAlan" class="control-label">Teslim Alan</label>
+        <input asp-for="TeslimAlan" class="form-control" />
+        <span asp-validation-for="TeslimAlan" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Toplam" class="control-label">Toplam</label>
+        <input asp-for="Toplam" class="form-control" />
+        <span asp-validation-for="Toplam" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Geri Dön</a>
+</div>

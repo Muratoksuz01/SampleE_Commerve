@@ -1,0 +1,45 @@
+@model E_ticaret.Models.Sınıflar.SatisHareket
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Satış Ekle";
+}
+
+<h2>Yeni Satış Ekle</h2>
+
+<form asp-action="SatisEkle" method="post">
+    <div class="form-group">
+        @Html.LabelFor(x => x.Urun)
+        @Html.DropDownListFor(x => x.Urun.UrunID, ViewBag.dgr1 != null ? new SelectList(ViewBag.dgr1, "Value", "Text") : new SelectList(Enumerable.Empty<SelectListItem>()), "Ürün Seçiniz", new { @class = "form-control" })
+    </div>
+    
+    <div class="form-group">
+        @Html.Label("Cari")
+        @Html.DropDownListFor(x => x.Cariler.CariID, ViewBag.dgr2 != null ? new SelectList(ViewBag.dgr2, "Value", "Text") : new SelectList(Enumerable.Empty<SelectListItem>()), "Cari Seçiniz", new { @class = "form-control" })
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Personel)
+        @Html.DropDownListFor(x => x.Personel.PersonelID, ViewBag.dgr3 != null ? new SelectList(ViewBag.dgr3, "Value", "Text") : new SelectList(Enumerable.Empty<SelectListItem>()), "Personel Seçiniz", new { @class = "form-control" })
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Adet)
+        @Html.TextBoxFor(x => x.Adet, new { @class = "form-control", type = "number", required = "required" })
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Fiyat)
+        @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control", type = "number", required = "required" })
+    </div>
+    
+    @* <div class="form-group">
+        @Html.LabelFor(x => x.ToplamTutar)
+        @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control", type = "number", required = "required" })
+    </div> *@
+    
+    <div class="form-group mt-3">
+        <input type="submit" value="Satışı Kaydet" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</form>

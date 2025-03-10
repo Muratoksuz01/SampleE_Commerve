@@ -1,0 +1,26 @@
+@model Kategori
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "KategoriGuncelle";
+
+}
+<h2>Kategori Güncelle</h2>
+
+<form asp-action="KategoriGuncelle" method="post">
+        <input type="hidden" asp-for="KategoriID"  />
+    <div class="form-group">
+        <label asp-for="KategoriAd" class="control-label"></label>
+        <input asp-for="KategoriAd" class="form-control" />
+        <span asp-validation-for="KategoriAd" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Geri Dön</a>
+</div>
+

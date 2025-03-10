@@ -1,0 +1,43 @@
+@model Personel
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Personel Güncelle";
+}
+
+<h2>Personel Güncelle</h2>
+
+<form asp-action="PersonelGuncelle" method="post" >
+    <input type="hidden" asp-for="PersonelID" />
+
+    <div class="form-group">
+        <label asp-for="PersonelAd" class="control-label">Personel Adı</label>
+        <input asp-for="PersonelAd" class="form-control" required />
+        <span asp-validation-for="PersonelAd" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PersonelSoyad" class="control-label">Personel Soyadı</label>
+        <input asp-for="PersonelSoyad" class="form-control" required />
+        <span asp-validation-for="PersonelSoyad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PersonelGorsel" class="control-label">Personel Görseli</label>
+        <input asp-for="PersonelGorsel" type="text" class="form-control" />
+        <span asp-validation-for="PersonelGorsel" class="text-danger"></span>
+    </div>
+
+   <div class="form-group">
+    <label asp-for="DepartmanID" class="control-label">Departman</label>
+    <select asp-for="DepartmanID" class="form-control" asp-items="@(new SelectList(ViewBag.dgr, "DepartmanID", "DepartmanAd"))">
+        <option value="">Seçiniz</option>
+    </select>
+    <span asp-validation-for="DepartmanID" class="text-danger"></span>
+</div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</form>

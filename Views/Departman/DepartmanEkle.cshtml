@@ -1,0 +1,12 @@
+@{
+    Layout="~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "DepartmanEkle";
+}
+
+<form method="post" action="/Departman/DepartmanEkle">
+    <div class="form-group">
+        <label for="departmanAdi">Departman Adı</label>
+        <input type="text" class="form-control" name="DepartmanAd" id="departmanAdi" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>

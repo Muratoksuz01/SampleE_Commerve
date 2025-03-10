@@ -1,0 +1,55 @@
+# Visual Studio specific
+.vs/
+*.user
+*.suo
+*.cache
+*.ldb
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+*.log
+
+# ASP.NET specific
+App_Data/
+App_Db/
+AppPackages/
+Backup/
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+
+# Resharper
+*.DotSettings.user
+
+# IIS
+iisexpress/
+IISExpress/
+
+# User-specific
+*.rsuser
+
+# Publish artifacts
+*.Publish.xml
+*.PublishScripts/
+
+# Rider
+.idea/
+
+# JetBrains Rider
+*.sln.iml
+
+# Node modules (if using front-end frameworks like React or Angular)
+node_modules/
+
+# Environment Variables
+.env
+.env.*
+
+# Misc
+*.swp
+*.swo

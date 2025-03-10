@@ -1,0 +1,41 @@
+@model Cariler
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Cari Ekle";
+}
+
+<h2>Yeni Cari Ekle</h2>
+
+<form asp-action="CariEkle" method="post">
+    <div class="form-group">
+        <label asp-for="CariAd" class="control-label">Cari Adı</label>
+        <input asp-for="CariAd" class="form-control" required />
+        <span asp-validation-for="CariAd" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CariSoyad" class="control-label">Cari Soyadı</label>
+        <input asp-for="CariSoyad" class="form-control" required />
+        <span asp-validation-for="CariSoyad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CariSehir" class="control-label">Cari Şehir</label>
+        <input asp-for="CariSehir" class="form-control" required />
+        <span asp-validation-for="CariSehir" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CariMail" class="control-label">Cari E-posta</label>
+        <input asp-for="CariMail" class="form-control" required />
+        <span asp-validation-for="CariMail" class="text-danger"></span>
+    </div>
+
+ 
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Cariyi Kaydet" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</form>

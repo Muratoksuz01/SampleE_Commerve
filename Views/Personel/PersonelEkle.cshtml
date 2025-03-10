@@ -1,0 +1,45 @@
+@model Personel
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Personel Ekle";
+}
+
+<h2>Yeni Personel Ekle</h2>
+
+<form asp-action="PersonelEkle" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="PersonelAd" class="control-label">Personel Adı</label>
+        <input asp-for="PersonelAd" class="form-control" required />
+        <span asp-validation-for="PersonelAd" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PersonelSoyad" class="control-label">Personel Soyadı</label>
+        <input asp-for="PersonelSoyad" class="form-control" required />
+        <span asp-validation-for="PersonelSoyad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PersonelGorsel" class="control-label">Personel Görseli</label>
+        <input asp-for="PersonelGorsel" type="text" class="form-control" />
+        <span asp-validation-for="PersonelGorsel" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Departman.DepartmanAd" class="control-label">Departman</label>
+        <select asp-for="Departman.DepartmanAd" class="form-control">
+            <option value="">Seçiniz</option>
+            <option value="IT">IT</option>
+            <option value="Satış">Satış</option>
+            <option value="Muhasebe">Muhasebe</option>
+            <!-- Diğer departmanlar eklenebilir -->
+        </select>
+        <span asp-validation-for="Departman.DepartmanAd" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Personeli Kaydet" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</form>

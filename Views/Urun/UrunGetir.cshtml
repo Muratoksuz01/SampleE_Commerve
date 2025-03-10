@@ -1,0 +1,71 @@
+@model Urun
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "UrunGetir";
+}
+
+<h2>Ürün Güncelle</h2>
+
+<form asp-action="UrunGuncelle" method="post" enctype="multipart/form-data">
+<input type="hidden" asp-for="UrunID" />
+    <div class="form-group">
+        <label asp-for="UrunAd" class="control-label">Ürün Adı</label>
+        <input asp-for="UrunAd" class="form-control" />
+        <span asp-validation-for="UrunAd" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Marka" class="control-label">Marka</label>
+        <input asp-for="Marka" class="form-control" />
+        <span asp-validation-for="Marka" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Stok" class="control-label">Stok</label>
+        <input asp-for="Stok" class="form-control" />
+        <span asp-validation-for="Stok" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AlisFiyat" class="control-label">Alış Fiyatı</label>
+        <input asp-for="AlisFiyat" class="form-control" />
+        <span asp-validation-for="AlisFiyat" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SatisFiyat" class="control-label">Satış Fiyatı</label>
+        <input asp-for="SatisFiyat" class="form-control" />
+        <span asp-validation-for="SatisFiyat" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Durum" class="control-label">Durum</label>
+        <select asp-for="Durum" class="form-control">
+            <option value="true">Aktif</option>
+            <option value="false">Pasif</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UrunGorsel" class="control-label">Ürün Görseli</label>
+        <input asp-for="UrunGorsel" type="text" class="form-control" />
+        <span asp-validation-for="UrunGorsel" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="KategoriID" class="control-label">Kategori</label>
+        <select asp-for="KategoriID" class="form-control" asp-items="ViewBag.Kategoriler">
+            <option value="">Kategori Seçin</option>
+        </select>
+        <span asp-validation-for="KategoriID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Güncelle" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Geri Dön</a>
+</div>

@@ -1,0 +1,34 @@
+@model List<E_ticaret.Models.Sınıflar.FaturaKalem>
+
+@{
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+    ViewData["Title"] = "Fatura Detayları";
+}
+
+<h2>Fatura Detayları</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Fatura Kalem ID</th>
+            <th>Açıklama</th>
+            <th>Adet</th>
+            <th>Birim Fiyat</th>
+            <th>Tutar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FaturaKalemID</td>
+                <td>@item.Aciklama</td>
+                <td>@item.Miktar</td>
+                <td>@item.BirimFiyat ₺</td>
+                <td>@item.Tutar ₺</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="FaturaKalemEkle" class="btn btn-primary">Yeni Kalem ekle</a>

@@ -1,0 +1,61 @@
+@model List<Faturalar>
+
+@{
+    ViewData["Title"] = "Fatura Listesi";
+    Layout = "~/Views/Shared/_AdminLeyout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Fatura ID</th>
+                <th>Seri No</th>
+                <th>Sıra No</th>
+                <th>Vergi Dairesi</th>
+                <th>Tarih</th>
+                <th>Saat</th>
+                <th>Toplam</th>
+                <th>Teslim Eden</th>
+                <th>Teslim Alan</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fatura in Model)
+            {
+                <tr>
+                    <td>@fatura.FaturaID</td>
+                    <td>@fatura.FaturaSeriNo</td>
+                    <td>@fatura.FaturaSıraNo</td>
+                    <td>@fatura.VergiDairesi</td>
+                    <td>@fatura.Tarih.ToString("dd/MM/yyyy")</td>
+                    <td>@fatura.Saat</td>
+                    <td>@fatura.Toplam₺</td> <!-- Fatura Toplam Tutar -->
+                    <td>@fatura.TeslimEden</td>
+                    <td>@fatura.TeslimAlan</td>
+                    <td>
+                        <!-- Fatura Detay Butonu -->
+                        <a href="@Url.Action("FaturaDetay", "Fatura", new { id = fatura.FaturaID })" class="btn btn-info">Detay</a>
+
+                        <!-- Güncelle Butonu -->
+                        <a href="@Url.Action("FaturaGetir", "Fatura", new { id = fatura.FaturaID })" class="btn btn-warning">Güncelle</a>
+
+                        <!-- Sil Butonu -->
+                        @* <a href="@Url.Action("FaturaSil", "Fatura", new { id = fatura.FaturaID })" class="btn btn-danger">Sil</a> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Veri bulunamadı.</p>
+}
+
+<!-- Yeni Fatura Ekleme Butonu -->
+<a href="/Fatura/FaturaEkle" class="btn btn-primary">Yeni Fatura</a>
